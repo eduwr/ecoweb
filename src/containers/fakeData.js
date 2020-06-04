@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ASYNC_DATA_REQUEST } from '../store/reducers/action';
 
 const TableExampleSelectableRow = () => {
+  const state = useSelector((state) => state.fetchData);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({ type: ASYNC_DATA_REQUEST });
-  }, []);
-
-  const state = useSelector((state) => state.fetchData);
+  }, [dispatch]);
 
   return state.loading ? (
     <div
